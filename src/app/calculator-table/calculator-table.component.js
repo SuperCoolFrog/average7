@@ -14,7 +14,7 @@ function CalculatorTableController() {
         { date: '05/05/1900', value: '5', notes: 'e' },
         { date: '06/06/1900', value: '6', notes: 'f' },
         { date: '07/07/1900', value: '7', notes: 'g' },
-        { date: '08/08/1900', value: '8', notes: 'h' },
+        { date: '08/08/1900', value: '8', notes: 'This is some notes to see if it stays on one line' },
     ];
     let lastSeven = this.data.sort((a, b) => (new Date(b.date)) - (new Date(a.date)));
     let total = lastSeven.reduce((total, record) => parseFloat(record.value) + total, 0.0);

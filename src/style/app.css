@@ -1,0 +1,4 @@
+.calculator-table-container .table .td.notes {
+    overflow: hidden;
+    white-space: nowrap;
+}
