@@ -1,8 +1,8 @@
 import angular from 'angular';
 import '../style/app.css';
 
-import  CalculatorTable from './calculator-table/calculator-table.component';
-import  BarsIcon from './icons/bars-icon/bars-icon.components';
+import CalculatorTable from './calculator-table/calculator-table.component';
+import ArchiveButton from './archive-button/archive-button.component';
 
 const MODULE_NAME = 'app';
 
@@ -14,12 +14,16 @@ let app = () => {
   }
 };
 
-class AppCtrl {}
+class AppCtrl {
+  constructor() {
+    this.isOpen = false;
+  }
+}
 
 angular
   .module(MODULE_NAME, [
     CalculatorTable,
-    BarsIcon,
+    ArchiveButton,
   ])
   .directive('app', app)
   .controller('AppCtrl', AppCtrl);
