@@ -7,7 +7,7 @@ const MODULE_NAME = 'app';
 
 let app = () => {
   return {
-    template: require('./app.html'),
+    template: require('./app.template.html'),
     controller: 'AppCtrl',
     controllerAs: MODULE_NAME,
   }

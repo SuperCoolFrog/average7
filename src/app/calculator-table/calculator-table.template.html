@@ -1,6 +1,19 @@
-<h1>
-    {{$ctrl.header}}
-</h1>
 <div>
-    TABLE
+    Average of Last 7 Records: {{$ctrl.average}}{{$ctrl.unit}}
 </div>
+<table class="pure-table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Value</th>
+            <th>Notes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="record in $ctrl.data">
+            <td>{{record.date}}</td>
+            <td>{{record.value}}{{$ctrl.unit}}</td>
+            <td>{{record.notes}}</td>
+        </tr>
+    </tbody>
+</table>
