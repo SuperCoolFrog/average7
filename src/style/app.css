@@ -16,9 +16,25 @@
     align-items: center;
 }
 
+.main-container {
+    margin-bottom: 50px;
+}
+
 /** Calculator Table**/
-.calculator-table-container {
-    margin: 5px 5px 50px 5px;
+.average-container {
+    padding: 10px 5px 10px 5px; 
+    margin: 3px;
+    border: 1px solid #333333;
+    border-radius: 3px;
+    background-color: #99CCFF;
+    text-align: center;
+}
+.average-container .average-label {
+    font-weight: 600;
+}
+
+.calculator-table-container .tbody {
+    margin: 5px;
 }
 .calculator-table-container .thead {
     background-color: #cccccc;

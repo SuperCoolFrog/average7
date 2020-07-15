@@ -7,7 +7,14 @@ const template = require('./calculator-table.template.html');
 function CalculatorTableController() {
     this.unit = 'lbs';
     this.data = data;
-    let lastSeven = this.data.sort((a, b) => (new Date(b.date)) - (new Date(a.date)));
+
+    let sortedData = this.data.sort((a, b) => (new Date(b.date)) - (new Date(a.date))).slice();
+
+    const lastSeven = [];
+    for (let i = 0; i < 7; i++) {
+        lastSeven.push(sortedData[i]);
+    }
+
     let total = lastSeven.reduce((total, record) => parseFloat(record.value) + total, 0.0);
     let average = total / 7;
 
