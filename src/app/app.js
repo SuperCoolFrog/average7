@@ -1,8 +1,13 @@
 import angular from 'angular';
+import angularRoute from 'angular-route';
+import applyConfig from './app.config';
+
 import '../style/app.css';
 
 import CalculatorTable from './calculator-table/calculator-table.component';
 import ArchiveButton from './archive-button/archive-button.component';
+import NewItemButton from './new-item-button/new-item-button.component';
+import ConfigButton from './config-button/config-button.component';
 
 const MODULE_NAME = 'app';
 
@@ -20,12 +25,17 @@ class AppCtrl {
   }
 }
 
-angular
+const appModule = angular
   .module(MODULE_NAME, [
+    'ngRoute',
     CalculatorTable,
     ArchiveButton,
+    NewItemButton,
+    ConfigButton,
   ])
   .directive('app', app)
   .controller('AppCtrl', AppCtrl);
+
+applyConfig(appModule);
 
 export default MODULE_NAME;

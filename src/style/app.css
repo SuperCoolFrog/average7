@@ -33,6 +33,11 @@
     font-weight: 600;
 }
 
+.calculator-table-container .tbody .tr {
+    border-bottom: 1px solid black;
+    margin: 3px 0 3px 0;
+}
+
 .calculator-table-container .tbody {
     margin: 5px;
 }
