@@ -7,14 +7,20 @@
         <!-- Headers -->
         <div class="thead">
             <div class="pure-g tr">
-                <div class="pure-u-1-5 th">
-                    Date
+                <div class="pure-u-1-5">
+                    <div class="th center">
+                        Date
+                    </div>
                 </div>
-                <div class="pure-u-1-5 th">
-                    Value
+                <div class="pure-u-1-5">
+                    <div class="th center">
+                        Value
+                    </div>
                 </div>
-                <div class="pure-u-3-5 th">
-                    Notes 
+                <div class="pure-u-3-5">
+                    <div class="th th--left-aligned end-column">
+                        Notes
+                    </div>
                 </div>
             </div>
         </div>
@@ -22,10 +28,10 @@
         <!-- Body -->
         <div class="tbody">
             <div class="pure-g tr" ng-repeat="record in $ctrl.data">
-                <div class="pure-u-1-5 td">
+                <div class="pure-u-1-5 td date">
                    {{record.date}} 
                 </div>
-                <div class="pure-u-1-5 td">
+                <div class="pure-u-1-5 td values">
                    {{record.value}}{{$ctrl.unit}} 
                 </div>
                 <div class="pure-u-3-5 td notes">
