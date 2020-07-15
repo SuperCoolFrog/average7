@@ -9,7 +9,7 @@ const applyConfig = (module) => {
                     template: '<calculator-table></calculator-table>'
                 }).
                 when('/new', {
-                    template: '<div>NEW</div>'
+                    template: '<new-item-form></new-item-form>'
                 }).
                 when('/config', {
                     template: '<div>CONFIG</div>'

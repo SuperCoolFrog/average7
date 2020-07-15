@@ -1,0 +1,14 @@
+<div class="new-item-form-container">
+    <form class="pure-form">
+        <fieldset class="pure-group">
+            <input type="date" class="pure-input-1" placeholder="Date" ng-model="$ctrl.form.date" />
+            <input type="number" class="pure-input-1" placeholder="Value" ng-model="$ctrl.form.value" />
+        </fieldset>
+        <fieldset class="pure-group">
+            <textarea class="pure-input-1" placeholder="Notes" ng-model="$ctrl.form.notes"></textarea>
+        </fieldset>
+        <fieldset class="pure-group save-button-container">
+            <button type="submit" class="pure-button pure-input-1 pure-button-primary" ng-click="$ctrl.handleSaveClick()">Save</button>
+        </fieldset>
+    </form>
+</div>
