@@ -1,14 +1,25 @@
 import angular from 'angular';
 import CalculatorTableModule, { CALCULATOR_TABLE_MODULE_NAME } from './calculator-table.module';
-import data from './data.json';
+// import data from './data.json';
 
 const template = require('./calculator-table.template.html');
 
-function CalculatorTableController(Database) {
-    this.unit = 'lbs';
-    this.data = data;
+const getUnit = (data) => {
+    return (data && data.settings && data.settings.unit) || '';
+}
 
-    let sortedData = this.data.sort((a, b) => (new Date(b.date)) - (new Date(a.date))).slice();
+function CalculatorTableController(Database) {
+    this.data = Database.getData();
+
+    if (!this.data) {
+        this.noDataOrRecords = true;
+        return;
+    }
+
+    this.records = this.data.records;
+    this.unit = getUnit(Database);
+
+    let sortedData = this.records.sort((a, b) => (new Date(b.date)) - (new Date(a.date))).slice();
 
     const lastSeven = [];
     for (let i = 0; i < 7; i++) {
@@ -19,8 +30,6 @@ function CalculatorTableController(Database) {
     let average = total / 7;
 
     this.average = Math.round((average + Number.EPSILON) * 100) / 100
-
-    Database.getData();
 };
 
 CalculatorTableController.$inject = ['Database'];

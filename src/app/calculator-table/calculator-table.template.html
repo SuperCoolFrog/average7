@@ -1,8 +1,12 @@
 <div class="average-container">
     <span class="average-label">Average of Last 7 Records: </span>
     <span class="average-value">{{$ctrl.average}}{{$ctrl.unit}}</span>
+    <span class="average-value" ng-show="$ctrl.noDataOrRecords">0{{$ctrl.unit}}</span>
 </div>
-<div class="calculator-table-container">
+<div class="no-data" ng-show="$ctrl.noDataOrRecords">
+    <strong>No Data to Display</strong>
+</div>
+<div class="calculator-table-container" ng-hide="$ctrl.noDataOrRecords">
     <!-- Table -->
     <div class="table">
         <!-- Headers -->
