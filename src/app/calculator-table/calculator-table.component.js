@@ -4,7 +4,7 @@ import data from './data.json';
 
 const template = require('./calculator-table.template.html');
 
-function CalculatorTableController() {
+function CalculatorTableController(Database) {
     this.unit = 'lbs';
     this.data = data;
 
@@ -19,7 +19,11 @@ function CalculatorTableController() {
     let average = total / 7;
 
     this.average = Math.round((average + Number.EPSILON) * 100) / 100
+
+    Database.getData();
 };
+
+CalculatorTableController.$inject = ['Database'];
 
 CalculatorTableModule.component(CALCULATOR_TABLE_MODULE_NAME, {
     template,

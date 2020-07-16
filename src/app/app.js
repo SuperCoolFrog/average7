@@ -4,6 +4,7 @@ import applyConfig from './app.config';
 
 import '../style/app.css';
 
+import Core from './core/app.core';
 import CalculatorTable from './calculator-table/calculator-table.component';
 import ArchiveButton from './archive-button/archive-button.component';
 import NewItemButton from './new-item-button/new-item-button.component';
@@ -30,6 +31,7 @@ class AppCtrl {
 const appModule = angular
   .module(MODULE_NAME, [
     'ngRoute',
+    Core,
     CalculatorTable,
     ArchiveButton,
     NewItemButton,
