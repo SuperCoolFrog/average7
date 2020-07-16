@@ -9,6 +9,7 @@ import ArchiveButton from './archive-button/archive-button.component';
 import NewItemButton from './new-item-button/new-item-button.component';
 import ConfigButton from './config-button/config-button.component';
 import NewItemForm from './new-item-form/new-item-form.component';
+import SettingsForm from './settings-form/settings-form.component';
 
 const MODULE_NAME = 'app';
 
@@ -34,6 +35,7 @@ const appModule = angular
     NewItemButton,
     ConfigButton,
     NewItemForm,
+    SettingsForm,
   ])
   .directive('app', app)
   .controller('AppCtrl', AppCtrl);

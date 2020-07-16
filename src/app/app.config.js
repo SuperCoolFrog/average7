@@ -11,8 +11,8 @@ const applyConfig = (module) => {
                 when('/new', {
                     template: '<new-item-form></new-item-form>'
                 }).
-                when('/config', {
-                    template: '<div>CONFIG</div>'
+                when('/settings', {
+                    template: '<settings-form></settings-form>'
                 }).
                 otherwise('/average');
             }
