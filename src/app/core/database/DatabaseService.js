@@ -46,8 +46,18 @@ class DatabaseService {
         fileCreator(JSON.stringify(this.data), FILE_NAME, FILE_TYPE);
     }
 
-    setDataFromDatabaseFile(filename) {
+    setDataFromDatabaseFile(file) {
+        const r = new FileReader();
 
+        return new Promise((resolve, reject) => {
+            r.onloadend = (e) => {
+                const data = JSON.parse(e.target.result);
+                this.saveData(data);
+                resolve(data)
+            }
+
+            r.readAsBinaryString(file);
+        })
     }
 
     getData() {

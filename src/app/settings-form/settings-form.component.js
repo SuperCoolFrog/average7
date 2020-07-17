@@ -23,6 +23,15 @@ function SettingsFormController(Database) {
     this.handleDownloadClick = () => {
         Database.getDatabaseFile();
     };
+
+    this.handleUploadClick = () => {
+        const file = document.getElementById('database-file').files[0];
+        Database.setDataFromDatabaseFile(file)
+            .then((data) => {
+                this.data = data;
+                this.unit = getUnit(data);
+            });
+    };
 }
 
 SettingsFormController.$inject = ['Database'];
