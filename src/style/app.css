@@ -3,6 +3,7 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-color: lightgrey;
 }
 
 .app-container {
@@ -10,6 +11,7 @@ body {
     height: 100%;
     max-width: 800px;
     max-height: 800px;
+    background-color: white;
 }
 
 .app-bar {
@@ -51,6 +53,7 @@ body {
     align-items: center;
     justify-content: center;
     margin: 1em;
+    height: calc(100vh - 50px);
 }
 
 .help-screen-container header h1 {
@@ -59,6 +62,7 @@ body {
 
 .help-screen-container .help-screen-icon-container {
     margin: 1em;
+    max-width: 115px;
 }
 
 .help-screen-container .description {
@@ -130,6 +134,10 @@ body {
 .average-container .average-label {
     font-weight: 600;
 }
+.calculator-table-container {
+    min-height: calc(100vh - 50px);
+    overflow-y: auto;
+}
 
 .calculator-table-container .tbody .tr {
     border-bottom: 1px solid black;
@@ -140,9 +148,10 @@ body {
     margin: 5px;
 }
 .calculator-table-container .thead {
-    background-color: #cccccc;
+    background-color: #333333;
     padding: 5px 0 5px 0;
     font-weight: 600;
+    color: white;
 }
 .calculator-table-container .table .th {
     border-right: 1px solid black;
