@@ -1,3 +1,5 @@
+import { fileCreator } from './helpers';
+
 /***
  *  // Data Structure
  * 
@@ -14,7 +16,9 @@
  * 
  */
 
- const LOCAL_STORAGE_KEY = 'average7Data';
+const LOCAL_STORAGE_KEY = 'average7Data';
+const FILE_TYPE = 'json';
+const FILE_NAME = 'average7.database.json';
 
 class DatabaseService {
 
@@ -39,7 +43,7 @@ class DatabaseService {
     }
 
     getDatabaseFile() {
-
+        fileCreator(JSON.stringify(this.data), FILE_NAME, FILE_TYPE);
     }
 
     setDataFromDatabaseFile(filename) {

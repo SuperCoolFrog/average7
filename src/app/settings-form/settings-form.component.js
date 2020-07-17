@@ -19,6 +19,10 @@ function SettingsFormController(Database) {
 
         Database.saveData(updatedData);
     }
+
+    this.handleDownloadClick = () => {
+        Database.getDatabaseFile();
+    };
 }
 
 SettingsFormController.$inject = ['Database'];
