@@ -48,4 +48,16 @@ const appModule = angular
 
 applyConfig(appModule);
 
+// Service Worker
+(() => {
+  if ('serviceWorker' in navigator) {
+    try {
+      navigator.serviceWorker.register('service-worker.js');
+    } catch(e) {
+      console.log(`Service Worker registration failed ${e.message}`);
+    }
+  }
+})();
+
+
 export default MODULE_NAME;
