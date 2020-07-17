@@ -134,6 +134,18 @@ body {
 .average-container .average-label {
     font-weight: 600;
 }
+.row-editor .editor-actions {
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.row-editor .editor-actions .delete-button {
+}
+.row-editor .editor-actions .unselect-button {
+}
+
 .calculator-table-container {
     min-height: calc(100vh - 50px);
     overflow-y: auto;
@@ -142,6 +154,9 @@ body {
 .calculator-table-container .tbody .tr {
     border-bottom: 1px solid black;
     margin: 3px 0 3px 0;
+}
+.calculator-table-container .tbody .tr.selected {
+    background-color: #99CCFF;
 }
 
 .calculator-table-container .tbody {
@@ -173,7 +188,7 @@ body {
 .calculator-table-container .table .td.values {
     text-align: center;
 }
-.calculator-table-container .table .td.dates {
+.calculator-table-container .table .td.date {
     text-align: center;
 }
 

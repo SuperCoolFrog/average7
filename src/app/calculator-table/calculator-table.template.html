@@ -1,7 +1,15 @@
-<div class="average-container">
+<div class="average-container" ng-hide="$ctrl.hasSelectedRows">
     <span class="average-label">Average of Last 7 Records: </span>
     <span class="average-value">{{$ctrl.average}}{{$ctrl.unit}}</span>
     <span class="average-value" ng-show="$ctrl.noDataOrRecords">0{{$ctrl.unit}}</span>
+</div>
+<div class="average-container row-editor" ng-show="$ctrl.hasSelectedRows">
+    <span class="average-label">Average of Selection: </span>
+    <span class="average-value">{{$ctrl.selectedRowsAverage}}{{$ctrl.unit}}</span>
+    <div class="editor-actions">
+        <button type="button" class="delete-button">Delete Selected Items</button>
+        <button type="button" class="unselect-button" ng-click="$ctrl.handleUnselectClick()">Unselect All</button>
+    </div>
 </div>
 <div class="no-data" ng-show="$ctrl.noDataOrRecords">
     <strong>No Data to Display</strong>
@@ -32,7 +40,11 @@
         <!-- /Headers -->
         <!-- Body -->
         <div class="tbody">
-            <div class="pure-g tr" ng-repeat="record in $ctrl.records track by $index">
+            <div class="pure-g tr"
+                ng-repeat="record in $ctrl.records track by $index"
+                ng-click="$ctrl.toggleRowSelected(this)"
+                ng-class="{ 'selected': $ctrl.isSelected(this) }"
+            >
                 <div class="pure-u-1-5 td date">
                    {{record.date}} 
                 </div>
