@@ -32,6 +32,11 @@ function SettingsFormController(Database) {
                 this.unit = getUnit(data);
             });
     };
+
+    this.resizeWindow = () => {
+        debugger;
+        window.resizeTo(411, 731);
+    };
 }
 
 SettingsFormController.$inject = ['Database'];
