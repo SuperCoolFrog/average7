@@ -14,7 +14,10 @@ const applyConfig = (module) => {
                 when('/settings', {
                     template: '<settings-form></settings-form>'
                 }).
-                otherwise('/average');
+                when('/help-screen', {
+                    template: '<help-screen></help-screen>'
+                }).
+                otherwise('/help-screen');
             }
         ]);
 };

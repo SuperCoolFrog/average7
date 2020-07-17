@@ -29,6 +29,28 @@
     font-weight: 600;
 }
 
+/** Help Screen**/
+.help-screen-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1em;
+}
+
+.help-screen-container header h1 {
+    text-align: center;
+}
+
+.help-screen-container .help-screen-icon-container {
+    margin: 1em;
+}
+
+.help-screen-container .description {
+    display: flex;
+    align-items: center;
+}
+
 /** Settings Form Container **/
 .settings-form-container {
     max-width: 500px;

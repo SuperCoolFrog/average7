@@ -6,6 +6,7 @@ import applyConfig from './app.config';
 import '../style/app.css';
 
 import Core from './core/app.core';
+import HelpScreen from './help-screen/help-screen.component';
 import CalculatorTable from './calculator-table/calculator-table.component';
 import ArchiveButton from './archive-button/archive-button.component';
 import NewItemButton from './new-item-button/new-item-button.component';
@@ -34,6 +35,7 @@ const appModule = angular
     'ngAnimate',
     'ngRoute',
     Core,
+    HelpScreen,
     CalculatorTable,
     ArchiveButton,
     NewItemButton,
