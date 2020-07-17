@@ -8,6 +8,17 @@
         <fieldset class="pure-group">
             <textarea class="pure-input-1" placeholder="Notes" ng-model="$ctrl.form.notes"></textarea>
         </fieldset>
+        <fieldset class="pure-group success-message-container fade" ng-show="$ctrl.showSuccessMessage">
+            <div class="success-message">
+                <header>Record has been added</header>
+                <p>
+                    {{$ctrl.addedRecord.date}} - {{$ctrl.addedRecord.value}}{{$ctrl.unit}}
+                </p>
+                <p>
+                    {{$ctrl.addedRecord.notes}}
+                </p>
+            </div>
+        </fieldset>
         <fieldset class="pure-group save-button-container">
             <button type="submit" class="pure-button pure-input-1 pure-button-primary" ng-click="$ctrl.handleSaveClick()">Save</button>
         </fieldset>

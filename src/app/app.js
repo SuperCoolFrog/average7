@@ -1,5 +1,6 @@
 import angular from 'angular';
 import angularRoute from 'angular-route';
+import angularAnimate from 'angular-animate';
 import applyConfig from './app.config';
 
 import '../style/app.css';
@@ -30,6 +31,7 @@ class AppCtrl {
 
 const appModule = angular
   .module(MODULE_NAME, [
+    'ngAnimate',
     'ngRoute',
     Core,
     CalculatorTable,

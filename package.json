@@ -21,6 +21,7 @@
   "homepage": "https://github.com/preboot/angularjs-webpack",
   "dependencies": {
     "angular": "^1.7.0",
+    "angular-animate": "^1.8.0",
     "angular-route": "^1.8.0"
   },
   "devDependencies": {

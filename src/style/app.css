@@ -51,6 +51,20 @@
     align-items: center;
     padding: 5px;
 }
+.new-item-form-container .success-message {
+    border: 3px solid #66CC33;
+    border-radius: 5px;
+}
+.new-item-form-container .success-message p {
+    text-align: center;
+}
+
+.new-item-form-container .success-message header {
+    text-align: center;
+    font-weight: 600;
+    margin-top: 5px;
+    border-bottom: 3px solid #66CC33;
+}
 .new-item-form-container form {
     height: calc(100vh - 50px);
     width: 100%;
@@ -214,4 +228,23 @@
     outline: none;
     border: none;
     font-weight: bolder;
+}
+
+/** Animations ***/
+
+.fade.ng-hide {
+  opacity: 0;
+}
+
+.fade.ng-hide-remove,
+.fade.ng-hide-add {
+  display: block !important; /* or inline-block, as appropriate */
+}
+
+.fade.ng-hide-remove {
+  transition: all linear 500ms;
+}
+
+.fade.ng-hide-add {
+  transition: all linear 500ms;
 }

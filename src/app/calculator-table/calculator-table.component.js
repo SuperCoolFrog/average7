@@ -11,24 +11,28 @@ const getUnit = (data) => {
 function CalculatorTableController(Database) {
     this.data = Database.getData();
 
-    if (!this.data) {
+    if (!this.data || !this.data.records) {
         this.noDataOrRecords = true;
         return;
     }
 
-    this.records = this.data.records;
-    this.unit = getUnit(Database);
+    const records = this.data.records;
 
-    let sortedData = this.records.sort((a, b) => (new Date(b.date)) - (new Date(a.date))).slice();
+    let sortedData = records.sort((a, b) => (new Date(b.date)) - (new Date(a.date))).slice();
 
     const lastSeven = [];
     for (let i = 0; i < 7; i++) {
-        lastSeven.push(sortedData[i]);
+        let record = sortedData[i];
+        if (record) {
+            lastSeven.push(record);
+        }
     }
 
     let total = lastSeven.reduce((total, record) => parseFloat(record.value) + total, 0.0);
-    let average = total / 7;
+    let average = total / (lastSeven.length < 7 ? lastSeven.length : 7);
 
+    this.records = records;
+    this.unit = getUnit(Database);
     this.average = Math.round((average + Number.EPSILON) * 100) / 100
 };
 
