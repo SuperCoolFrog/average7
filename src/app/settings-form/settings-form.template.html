@@ -3,7 +3,8 @@
         <fieldset>
             <legend>Settings</legend>
             <label for="unit">Unit</label>
-            <input type="text" id="unit" placeholder="unit" class="pure-u-1" />
+            <input type="text" id="unit" placeholder="unit" class="pure-u-1" ng-model="$ctrl.unit" />
+            <button type="button" class="pure-button pure-input-1 pure-button-primary" ng-click="$ctrl.handleSaveClick()">Save</button>
             <hr />
             <label for="database-file">Upload Database File</label>
             <input type="file" id="database-file" placeholder="unit" class="pure-u-1" />

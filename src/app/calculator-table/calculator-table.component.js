@@ -32,7 +32,7 @@ function CalculatorTableController(Database) {
     let average = total / (lastSeven.length < 7 ? lastSeven.length : 7);
 
     this.records = records;
-    this.unit = getUnit(Database);
+    this.unit = getUnit(this.data);
     this.average = Math.round((average + Number.EPSILON) * 100) / 100
 };
 
