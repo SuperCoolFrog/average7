@@ -1,13 +1,13 @@
 <div class="average-container" ng-hide="$ctrl.hasSelectedRows">
     <span class="average-label">Average of Last 7 Records: </span>
-    <span class="average-value">{{$ctrl.average}}{{$ctrl.unit}}</span>
+    <span class="average-value" ng-hide="$ctrl.noDataOrRecords">{{$ctrl.average}}{{$ctrl.unit}}</span>
     <span class="average-value" ng-show="$ctrl.noDataOrRecords">0{{$ctrl.unit}}</span>
 </div>
 <div class="average-container row-editor" ng-show="$ctrl.hasSelectedRows">
     <span class="average-label">Average of Selection: </span>
     <span class="average-value">{{$ctrl.selectedRowsAverage}}{{$ctrl.unit}}</span>
     <div class="editor-actions">
-        <button type="button" class="delete-button">Delete Selected Items</button>
+        <button type="button" class="delete-button" ng-click="$ctrl.handleDeleteClick()">Delete Selected Items</button>
         <button type="button" class="unselect-button" ng-click="$ctrl.handleUnselectClick()">Unselect All</button>
     </div>
 </div>

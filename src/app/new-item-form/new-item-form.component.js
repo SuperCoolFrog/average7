@@ -1,5 +1,5 @@
 import newItemFormModule, { NEW_ITEM_FORM_MODULE_NAME } from './new-item-form.module';
-import { data } from 'autoprefixer';
+import { v4 as uuidv4 } from 'uuid';
 
 const template = require('./new-item-form.template.html');
 
@@ -48,6 +48,7 @@ function NewItemFormController(Database, $timeout) {
             notes,
         } = self.form;
         const record = {
+            id: uuidv4(),
             date: date.toLocaleDateString(),
             value,
             notes,

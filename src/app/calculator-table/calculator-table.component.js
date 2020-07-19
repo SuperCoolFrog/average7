@@ -10,69 +10,86 @@ const getUnit = (data) => {
 
 function CalculatorTableController(Database) {
     this.data = Database.getData();
-    this.selectedRecords = [];
+    this.selectedRecordIds = [];
     this.hasSelectedRows = false;
     this.selectedRowsAverage = 0;
-
-    if (!this.data || !this.data.records) {
-        this.noDataOrRecords = true;
-        return;
-    }
-
-    const records = this.data.records;
-
-
-    /** For Last 7 Average **/
-    let sortedData = records.sort((a, b) => (new Date(b.date)) - (new Date(a.date))).slice();
-
-    const lastSeven = [];
-    for (let i = 0; i < 7; i++) {
-        let record = sortedData[i];
-        if (record) {
-            lastSeven.push(record);
-        }
-    }
-
-    let total = lastSeven.reduce((total, record) => parseFloat(record.value) + total, 0.0);
-    let average = total / (lastSeven.length < 7 ? lastSeven.length : 7);
-
-    this.records = records;
+    this.records = this.data.records;
     this.unit = getUnit(this.data);
-    this.average = Math.round((average + Number.EPSILON) * 100) / 100
 
-    /** Selection Handlers **/
-
-    const updateSelectedRowsAvg = () => {
-        if (this.selectedRecords.length < 1) {
+    const calculateAverage7 = () => {
+        if (!(this.data && this.data.records && this.data.records.length)) {
+            this.noDataOrRecords = true;
             this.selectedRowsAverage = 0;
             return;
         }
-        let total = this.selectedRecords.reduce((total, record) => parseFloat(record.value) + total, 0.0);
-        let average = total / this.selectedRecords.length;
+
+        const records = this.data.records;
+
+        /** For Last 7 Average **/
+        let sortedData = records.sort((a, b) => (new Date(b.date)) - (new Date(a.date))).slice();
+
+        const lastSeven = [];
+        for (let i = 0; i < 7; i++) {
+            let record = sortedData[i];
+            if (record) {
+                lastSeven.push(record);
+            }
+        }
+
+        let total = lastSeven.reduce((total, record) => parseFloat(record.value) + total, 0.0);
+        let average = total / (lastSeven.length < 7 ? lastSeven.length : 7);
+
+        this.average = Math.round((average + Number.EPSILON) * 100) / 100
+    };
+
+    const updateSelectedRowsAvg = () => {
+        if (this.selectedRecordIds.length < 1) {
+            this.selectedRowsAverage = 0;
+            return;
+        }
+        const selectedRecords = this.records.filter(record => this.selectedRecordIds.indexOf(record.id) > -1);
+        const total = selectedRecords.reduce((total, record) => parseFloat(record.value) + total, 0.0);
+        const average = total / this.selectedRecordIds.length;
         this.selectedRowsAverage = Math.round((average + Number.EPSILON) * 100) / 100;
     };
 
-    this.isSelected = (rowElement) => this.selectedRecords.indexOf(rowElement.record) > -1;
+    /** Selection Handlers **/
+    this.isSelected = (rowElement) => this.selectedRecordIds.indexOf(rowElement.record.id) > -1;
 
     this.toggleRowSelected = (rowElement) => {
-        const indexOfRecord = this.selectedRecords.indexOf(rowElement.record);
+        const { record } = rowElement;
+        const indexOfRecordId = this.selectedRecordIds.indexOf(record.id);
 
-        if (indexOfRecord > -1) {
-            this.selectedRecords.splice(indexOfRecord, 1);
+        if (indexOfRecordId > -1) {
+            this.selectedRecordIds.splice(indexOfRecordId, 1);
         } else {
-            this.selectedRecords.push(rowElement.record);
+            this.selectedRecordIds.push(record.id);
         }
 
-        this.hasSelectedRows = this.selectedRecords.length > 0;
+        this.hasSelectedRows = this.selectedRecordIds.length > 0;
         updateSelectedRowsAvg();
     };
 
-    this.handleDeleteClick = () => {};
     this.handleUnselectClick = () => {
-        this.selectedRecords.splice(0, this.selectedRecords.length);
+        this.selectedRecordIds.splice(0, this.selectedRecordIds.length);
         this.hasSelectedRows = false;
         updateSelectedRowsAvg();
     };
+
+    this.handleDeleteClick = () => {
+        const recordsToKeep = this.records.filter(record => this.selectedRecordIds.indexOf(record.id) === -1);
+        let data = Database.getData() || {};
+        data = Object.assign({}, data, {
+            records: recordsToKeep,
+        });
+        Database.saveData(data);
+        this.data = data;
+        this.records = data.records;
+        this.handleUnselectClick();
+        calculateAverage7();
+    };
+
+    calculateAverage7();
 };
 
 CalculatorTableController.$inject = ['Database'];
