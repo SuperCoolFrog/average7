@@ -192,6 +192,22 @@ body {
     text-align: center;
 }
 
+/** Install Button**/
+.install-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.install-button img {
+    width: 30px;
+    margin-right: 1em;
+}
+@media all and (display-mode: standalone) {
+  .install-button {
+      display: none;
+  }
+}
+
 /** Icons **/
 .icon-button {
     cursor: pointer;

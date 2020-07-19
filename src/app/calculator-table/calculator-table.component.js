@@ -13,7 +13,7 @@ function CalculatorTableController(Database) {
     this.selectedRecordIds = [];
     this.hasSelectedRows = false;
     this.selectedRowsAverage = 0;
-    this.records = this.data.records;
+    this.records = this.data ? this.data.records || [] : [];
     this.unit = getUnit(this.data);
 
     const calculateAverage7 = () => {
