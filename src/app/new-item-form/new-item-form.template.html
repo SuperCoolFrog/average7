@@ -2,11 +2,11 @@
     <form class="pure-form">
         <legend>New Record</legend>
         <fieldset class="pure-group">
-            <input type="date" class="pure-input-1" placeholder="Date" ng-model="$ctrl.form.date" />
-            <input type="number" class="pure-input-1" placeholder="Value" ng-model="$ctrl.form.value" />
+            <input type="date" class="pure-input-1" placeholder="Date" ng-model="$ctrl.form.date" required />
+            <input type="number" class="pure-input-1" placeholder="Numeric Value" ng-model="$ctrl.form.value" required />
         </fieldset>
         <fieldset class="pure-group">
-            <textarea class="pure-input-1" placeholder="Notes" ng-model="$ctrl.form.notes"></textarea>
+            <textarea class="pure-input-1" placeholder="Notes" ng-model="$ctrl.form.notes" required></textarea>
         </fieldset>
         <fieldset class="pure-group success-message-container fade" ng-show="$ctrl.showSuccessMessage">
             <div class="success-message">

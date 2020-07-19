@@ -1,5 +1,6 @@
 import newItemFormModule, { NEW_ITEM_FORM_MODULE_NAME } from './new-item-form.module';
 import { v4 as uuidv4 } from 'uuid';
+import { isNumber } from 'angular';
 
 const template = require('./new-item-form.template.html');
 
@@ -15,7 +16,16 @@ function NewItemFormController(Database, $timeout) {
         self.form = Object.assign({}, defaultForm, { date: new Date() });
     };
     resetForm();
-    
+
+    const isValid = () => {
+        const {
+            date,
+            value,
+            notes,
+        } = this.form;
+        return !!(date && notes) && (isNumber(value));
+    };
+
     const showSuccessMessage = (form) => {
         const {
             date,
@@ -40,6 +50,7 @@ function NewItemFormController(Database, $timeout) {
     };
 
     self.handleSaveClick = () => {
+        if (!isValid()) return;
         let data = Database.getData() || {};
         const records = data.records || [];
         const {
